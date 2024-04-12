@@ -12,10 +12,10 @@ function Hero() {
        <div>
             <p>Find me on</p>
             <div className="flex gap-2">
-                <Link to='https://www.github.com/Mikiejoe"'>
+                <Link to='https://www.github.com/Mikiejoe'>
                     <FaGithub size={24}/>
                 </Link>
-                <Link to='https://www.twitter.com/omoshjoe02"'>
+                <Link to='https://www.twitter.com/omoshjoe02'>
                     <FaTwitter size={24}/>
                 </Link>
             </div>
