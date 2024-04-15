@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaTwitter } from "react-icons/fa";
+import Img from "../../assets/image.png"
 function Hero() {
   return (
-    <div className="h-[50vh] flex items-center py-6">
+    <div className="flex items-center justify-between py-6">
       <div className="">
         <p>Hello I am</p>
         <h1 className="text-5xl font-bold">Joseph</h1>
@@ -21,6 +22,9 @@ function Hero() {
             </div>
        </div>
       </div>
+      <div className="bg-red-500 mt-5">
+        <img src={Img} alt="Joseph Omondi" className="w-96 object-c h-150"/>
+        </div>
     </div>
   );
 }
