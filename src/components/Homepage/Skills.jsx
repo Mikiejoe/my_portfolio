@@ -30,10 +30,10 @@ function Skills() {
   return (
     <div id="skills" className="my-12 text-center">
       <h1 className="text-4xl font-bold">My Skills</h1>
-      <p className="text-white/50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+      {/* <p className="text-white/50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
           beatae eos, suscipit molestiae fugit ab ipsum vitae debitis ex quae
           blanditiis assumenda, sint libero expedita aliquid ducimus labore
-          veritatis sapiente.</p>
+          veritatis sapiente.</p> */}
           <div className="flex justify-evenly">
             {
                 skills.map((skill, index) => (
