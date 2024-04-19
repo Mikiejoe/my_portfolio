@@ -6,12 +6,13 @@ import AOS from "aos";
 import NavBar from "./components/NavBar/NavBar";
 
 function App() {
+ 
   useEffect(() => {
     AOS.init();
   }, []);
   return (
     <Router>
-      <div>
+      <div  className="w-screen bg-primary overflow-x-hidden-hidden ">
         <NavBar />
         <Routes>
           <Route exact path="/" element={<HomePage />} />

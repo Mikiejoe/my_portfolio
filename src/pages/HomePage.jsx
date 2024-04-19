@@ -13,10 +13,13 @@ function HomePage() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  const handleScroll  = ()=>{
+    console.log('scrolling')
+  } 
   return (
     <>
-    <div className="px-32 relative">
-    <div className='h-screen'>
+    <div onScroll={handleScroll} id='home' className="relative ">
+    <div className='h-[80vh]'>
     
       <Hero/>
     </div>

@@ -15,7 +15,7 @@ function Footer() {
     }
   };
   return (
-    <div className="text-center space-y-4">
+    <div className="text-center space-y-8 bg-primary/50 w-full">
       <h1 className="text-4xl">Portfolio</h1>
       <div className="flex justify-center">
         <Link
