@@ -8,7 +8,7 @@ import {
   FaTwitterSquare,
   FaWhatsappSquare,
 } from "react-icons/fa";
-import Img from "../../assets/image.png";
+// import Img from "../../assets/image.png";
 function Hero() {
   return (
     <div className="flex items-center w-full overflow-hidden overflow-x-hidden h-full  relative md:px-32 px-8 justify-between">
@@ -38,9 +38,9 @@ function Hero() {
       </div>
       <div className="absolute h-fit md:relative top-0 right-0 z-[1] md:z-[1] items-center justify-center flex md:mt-[9rem]">
         <img
-          src={Img}
+          src="https://avatars.githubusercontent.com/u/99811467?v=4"
           alt="Joseph Omondi"
-          className="w-[400px] h-[80vh] object-cover"
+          className="object-cover"
         />
       </div>
     </div>
