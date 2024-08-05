@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: #0F0D38;
-    font-family: 'Poppins', sans-serif;
-    color: #FFF;
-}
+.navbar {
+    width: 100%;
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+  

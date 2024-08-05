@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import NavBar from "./components/NavBar/NavBar";
 
 function App() {
  
@@ -12,8 +11,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <div  className="w-screen bg-primary overflow-x-hidden-hidden ">
-        <NavBar />
+      <div  className="w-screen h-screen overflow-x-hidden bg-primary-bg">
         <Routes>
           <Route exact path="/" element={<HomePage />} />
         </Routes>

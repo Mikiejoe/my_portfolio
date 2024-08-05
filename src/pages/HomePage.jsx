@@ -1,35 +1,22 @@
 import React from 'react'
-import Footer from '../components/Footer/Footer'
-import NavBar from '../components/NavBar/NavBar'
+import Navbar from '../components/common/Navbar'
 import Hero from '../components/Homepage/Hero'
 import About from '../components/Homepage/About'
-import Portfolio from '../components/Homepage/Portfolio'
-import Contact from '../components/Homepage/Contact'
-import Skills from '../components/Homepage/Skills'
+import Projects from '../components/Homepage/Projects'
+import Footer from '../components/common/Footer'
+
 function HomePage() {
-  const scrollToSection = id => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-  const handleScroll  = ()=>{
-    console.log('scrolling')
-  } 
+  
   return (
-    <>
-    <div onScroll={handleScroll} id='home' className="relative ">
-    <div className='h-[80vh]'>
-    
-      <Hero/>
+    <div className='relative'>
+        <Navbar/>
+        <Hero/>
+        <div className=''>
+            <About/>
+            <Projects/>
+        </div>
+        <Footer/>
     </div>
-    <About/>
-    <Portfolio/>
-    <Skills/>
-    <Contact/>
-    <Footer/>
-    </div>
-    </>
   )
 }
 
