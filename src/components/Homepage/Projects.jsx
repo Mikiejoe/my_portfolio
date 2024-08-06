@@ -42,7 +42,7 @@ function Projects() {
       <div className=" text-gray-400 grid grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-4">
         
           {projects.map((item, index) => (
-            <ProjectItem key={index} description={item.description} link={item.link} image={item.image} name={item.title} />
+            <ProjectItem key={index} description={item.description} link={item.url} image={item.image} name={item.title} />
           ))}
         
       </div>

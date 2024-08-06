@@ -8,7 +8,7 @@ function About() {
         <h1 className="text-4xl font-bold">About</h1>
       </div>
       <div className="lg:grid flex flex-col-reverse grid-cols-2 md:gap-16 gap-4 items-center justify-center">
-        <p className="md:text-xl text-gray-300">
+        <p className="text-gray-300">
           Hello! I'm Joseph Omondi, an enthusiastic Information Technology
           student at Masinde Muliro University of Science and Technology
           (MMUST), with a keen interest in becoming a great Backend Developer. I
