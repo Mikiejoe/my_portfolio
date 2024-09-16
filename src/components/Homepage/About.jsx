@@ -2,38 +2,29 @@ import React from "react";
 
 function About() {
   return (
-    <div id="about" className="md:p-16 p-4 bg-primary-bg space-y-4 text-white">
+    <div id="about" className="p-4 md:py-16 bg-primary-bg space-y-4 text-white">
       <div className="flex space-x-2">
         <div className="w-2 bg-secondary "></div>
         <h1 className="text-4xl font-bold">About</h1>
       </div>
-      <div className="lg:grid flex flex-col-reverse grid-cols-2 md:gap-16 gap-4 items-center justify-center">
-        <p className="text-gray-300">
-          Hello! I'm Joseph Omondi, an enthusiastic Information Technology
-          student at Masinde Muliro University of Science and Technology
-          (MMUST), with a keen interest in becoming a great Backend Developer. I
-          thrive on solving complex problems and building efficient, scalable
-          systems. Throughout my academic journey and practical experiences,
-          I've cultivated a deep understanding of various IT domains, including
-          network design and management, as well as hands-on experience in
-          developing web applications. I'm particularly passionate about
-          crafting robust backend systems, ensuring smooth user experiences, and
-          leveraging the latest technologies to drive innovation. <br/> During my industrial attachment at the
-          County Assembly of Nakuru, I honed my skills in IT support and
-          maintenance strategies, contributing to the efficient operation of IT
-          systems and networks. When I'm not coding, you'll find me engrossed in
-          drama series, drawing inspiration from compelling stories and
-          characters. I believe that every line of code tells a story, and I aim
-          to write code that speaks of quality, reliability, and innovation. I'm
-          always eager to learn, collaborate, and contribute to projects that
-          challenge me to grow as a developer and a professional. Let's connect
-          and explore how we can build something amazing together!
+      <div className="flex flex-col-reverse mt-12 md:flex-row md:gap-16 gap-4 lg:h-[60vh] items-center justify-center">
+        <p className="text-gray-300 text-xl flex-1">
+          Hi, I'm Joseph Omondi, an aspiring full-stack developer with a passion
+          for building dynamic and user-centric web and mobile applications. I
+          have experience working with Django, React, Flutter, and Node.js,
+          which allows me to deliver seamless solutions from front-end
+          interfaces to robust back-end systems. Whether it's creating
+          responsive websites, developing cross-platform mobile apps, or
+          designing efficient APIs, I am driven by the desire to create
+          innovative and impactful digital experiences. Explore my portfolio to
+          see how I bring ideas to life through clean code, efficient design,
+          and modern technologies.
         </p>
-        <div className="">
+        <div className="flex-1 h-full w-full">
           <img
             src="https://avatars.githubusercontent.com/u/99811467?v=4"
             alt=""
-            className=""
+            className="h-full w-full"
           />
         </div>
       </div>

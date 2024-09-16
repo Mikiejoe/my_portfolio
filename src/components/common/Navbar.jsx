@@ -80,7 +80,7 @@ function Navbar() {
             ))}
           </div>
         </div>
-        <div className="flex space-x-2 text-white md:hidden">
+        <div className="flex space-x-2 transition-all ease-in text-white md:hidden">
           <div className="w-12">
           {isVisible ? (
             <FaX onClick={showNavbar} size={24} />

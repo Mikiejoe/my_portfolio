@@ -4,6 +4,7 @@ import Hero from '../components/Homepage/Hero'
 import About from '../components/Homepage/About'
 import Projects from '../components/Homepage/Projects'
 import Footer from '../components/common/Footer'
+import Contact from '../components/Homepage/Contact'
 
 function HomePage() {
   
@@ -11,9 +12,10 @@ function HomePage() {
     <div className='relative'>
         <Navbar/>
         <Hero/>
-        <div className=''>
+        <div className='md:px-24 p-4'>
             <About/>
             <Projects/>
+            <Contact/>
         </div>
         <Footer/>
     </div>
