@@ -40,13 +40,16 @@ function Contact() {
       };
 
       try {
-        const response = await fetch("https://portfolio-backend-tesg.onrender.com/api/send-email/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+        const response = await fetch(
+          "https://portfolio-backend-tesg.onrender.com/api/send-email/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -57,10 +60,9 @@ function Contact() {
             setSuccess(false);
             setResponse("");
           }, 5000);
-          console.log(data);
         } else {
           const data = await response.json();
-          console.log(data);
+
           setError(true);
           setResponse(data.message);
           setTimeout(() => {
@@ -69,7 +71,12 @@ function Contact() {
           }, 5000);
         }
       } catch (error) {
-        console.error("Error:", error);
+        setError(true);
+        setResponse(error);
+        setTimeout(() => {
+          setError(false);
+          setResponse("");
+        }, 5000);
       } finally {
         setEmail("");
         setSubject("");
@@ -134,8 +141,16 @@ function Contact() {
               />
             </div>
 
-            {success && <div className="mt-4 text-white bg-green-500 p-2 text-center rounded-md">{response}</div>}
-            {error && <div className="mt-4 text-white bg-red-500 p-2 text-center rounded-md">{response}</div>}
+            {success && (
+              <div className="mt-4 text-white bg-green-500 p-2 text-center rounded-md">
+                {response}
+              </div>
+            )}
+            {error && (
+              <div className="mt-4 text-white bg-red-500 p-2 text-center rounded-md">
+                {response}
+              </div>
+            )}
 
             <div className="mt-4 rounded-md overflow-hidden">
               <input
@@ -180,7 +195,7 @@ function Contact() {
                   </div>
                   <div>
                     <h2 className="text-secondary/80 text-[12px]">WhatsApp</h2>
-                    <p className="text-sm text-gray-300">+2541100824</p>
+                    <p className="text-sm text-gray-300">+254114400824</p>
                   </div>
                 </div>
               </div>
