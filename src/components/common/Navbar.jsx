@@ -19,8 +19,10 @@ function Navbar() {
   };
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
+    console.log(id);
     setIsVisible(!isVisible);
     if (element) {
+      // console.log(element);
       element.scrollIntoView({ behavior: "smooth" });
     }
   };

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
  
@@ -14,6 +15,7 @@ function App() {
       <div  className="w-screen h-screen overflow-x-hidden bg-primary-bg">
         <Routes>
           <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/projects/:name" element={<ProjectDetail />} />
         </Routes>
       </div>
     </Router>
