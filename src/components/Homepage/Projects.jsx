@@ -128,17 +128,7 @@ const Projects = () => {
           <BsArrowRight size={24} className="text-white" />
         </div>
 
-        {/* Scroll Position Circles */}
-        <div className="flex justify-center space-x-2 mt-4">
-          {projects.map((_, index) => (
-            <div
-              key={index}
-              className={`w-3 h-3 rounded-full ${
-                activeIndex === index ? "bg-blue-500" : "bg-gray-400"
-              }`}
-            ></div>
-          ))}
-        </div>
+        
       </div>
     </div>
   );
