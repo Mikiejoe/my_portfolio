@@ -7,12 +7,12 @@ import { Link, useLocation } from "react-router-dom";
 function Navbar() {
   const [isVisible, setIsVisible] = React.useState(false);
   const [isFixed, setIsFixed] = useState(false);
-  const location = useLocation()
+  const location = useLocation();
 
-  const isCurrentLocation = (id)=>{
+  const isCurrentLocation = (id) => {
     const l = `#${id}`;
-    return l===location.hash;
-  }
+    return l === location.hash;
+  };
 
   const showNavbar = () => {
     setIsVisible(!isVisible);
@@ -26,25 +26,24 @@ function Navbar() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
- 
+
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY)
-  
-  
-      if (window.scrollY > 60) { // Change 100 to your desired scroll position
+      console.log(window.scrollY);
+
+      if (window.scrollY > 60) {
+        // Change 100 to your desired scroll position
         setIsFixed(true);
       } else {
         setIsFixed(false);
       }
     };
-  
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('scroll', showNavbar);
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", showNavbar);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-    
   }, []);
   const Links = [
     {
@@ -66,29 +65,52 @@ function Navbar() {
     },
   ];
   return (
-    <div onClick={showNavbar} className={`w-full fixed top-0 left-0 ${isFixed ? 'fixed top-0 left-0 shadow-lg' : ''}`}>
+    <div
+      onClick={showNavbar}
+      className={`w-full fixed top-0 left-0 ${
+        isFixed ? "fixed top-0 left-0 shadow-lg" : ""
+      }`}
+    >
       <div className=" p-4 bg-primary flex">
         <div className="hidden md:flex justify-center w-full items-center">
           <div className="text-white space-x-4">
-            {Links.map((link, index) => (
-              <Link
-                key={index}
-                to={`#${link.id}`}
-                onClick={() => scrollToSection(link.id)}
-                className={`border-b-2 border-transparent ${isCurrentLocation(link.id) ? "border-secondary":"border-transparent"} hover:border-secondary hover:text-secondary p-2`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <Link
+          to="/"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent  hover:border-secondary hover:text-secondary p-2`}
+        >
+          Home
+        </Link>
+        <Link
+          to="#"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+        >
+          About
+        </Link>
+        <Link
+          to="#"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+        >
+          Projects
+        </Link>
+        <Link
+          to="#"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+        >
+          Contact
+        </Link>
           </div>
         </div>
         <div className="flex space-x-2 transition-all ease-in text-white md:hidden">
           <div className="w-12">
-          {isVisible ? (
-            <FaX onClick={showNavbar} size={24} />
-          ) : (
-            <MdMenu onClick={showNavbar} size={28} />
-          )}
+            {isVisible ? (
+              <FaX onClick={showNavbar} size={24} />
+            ) : (
+              <MdMenu onClick={showNavbar} size={28} />
+            )}
           </div>
           <h1 className="text-lg font-bold text-secondary">Joseph Omondi</h1>
         </div>
@@ -99,16 +121,34 @@ function Navbar() {
         } bg-primary w-screen z-[9999] absolute transition-all ease-in duration-500 flex flex-col md:hidden px-4`}
         onScroll={showNavbar}
       >
-        {Links.map((link, index) => (
-          <Link
-            key={index}
-            to={`#${link.id}`}
-            onClick={() => scrollToSection(link.id)}
-            className={`border-b-2 border-transparent ${isCurrentLocation(link.id) ? "border-secondary":"border-transparent"} hover:border-secondary hover:text-secondary p-2`}
-          >
-            {link.name}
-          </Link>
-        ))}
+        <Link
+          to="/"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent  hover:border-secondary hover:text-secondary p-2`}
+        >
+          Home
+        </Link>
+        <Link
+          to="#"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+        >
+          About
+        </Link>
+        <Link
+          to="#"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+        >
+          Projects
+        </Link>
+        <Link
+          to="#"
+          // onClick={() => scrollToSection(link.id)}
+          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+        >
+          Contact
+        </Link>
       </div>
     </div>
   );
