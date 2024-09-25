@@ -6,7 +6,7 @@ function ProjectItem({ project, className }) {
   return (
     <div
       onClick={() =>
-        navigate(`/projects/${project.title}`, { state: { id: project.id } })
+        navigate(`/projects/${project.slug}`)
       }
       // scroll-item flex-shrink-0 mx-2 w-[300px] h-[250px] bg-gray-200 rounded-full shadow-md flex justify-center transition-transform duration-300
 

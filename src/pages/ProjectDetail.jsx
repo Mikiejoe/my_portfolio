@@ -11,9 +11,12 @@ function ProjectDetail() {
   const [error, setError] = React.useState();
 
   const getProject = async () => {
+    const title = location.pathname.split("/")[2];
+    console.log(title);
     try {
+      console.log("title",title)
       const response = await fetch(
-        `https://portfolio-backend-tesg.onrender.com/api/projects/${location.state.id}`
+        `https://portfolio-backend-tesg.onrender.com/api/projects/${title}`
       );
       if (!response.ok) throw new Error("Network response was not ok.");
       const data = await response.json();
@@ -101,12 +104,12 @@ function ProjectDetail() {
             {project.images.map((image, index) => (
               <div
                 key={index}
-                className="w-1/3 h-[300px] rounded-md overflow-hidden bg-gray-400"
+                className="md:w-1/3 w-1/2 h-[300px] rounded-md overflow-hidden bg-gray-400"
               >
                 <img
                   src={image.image}
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="md:w-full h-full  object-cover"
                 />
               </div>
             ))}

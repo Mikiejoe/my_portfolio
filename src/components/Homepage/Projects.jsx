@@ -18,6 +18,7 @@ const Projects = () => {
       );
       if (!response.ok) throw new Error("Network response was not ok.");
       const data = await response.json();
+      console.log("projects",data);
       setProjects(data);
     } catch (error) {
       console.error("Failed to fetch projects:", error);
@@ -128,7 +129,6 @@ const Projects = () => {
           <BsArrowRight size={24} className="text-white" />
         </div>
 
-        
       </div>
     </div>
   );
