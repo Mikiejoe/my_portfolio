@@ -7,7 +7,7 @@ import Footer from '../components/common/Footer'
 import Contact from '../components/Homepage/Contact'
 
 function HomePage() {
-  
+  document.title = "Joseph Omondi - Portfolio";
   return (
     <div className='relative'>
         <Navbar/>

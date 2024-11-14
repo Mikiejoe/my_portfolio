@@ -9,61 +9,25 @@ function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
   const location = useLocation();
 
-  const isCurrentLocation = (id) => {
-    const l = `#${id}`;
-    return l === location.hash;
-  };
-
   const showNavbar = () => {
     setIsVisible(!isVisible);
   };
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
-    console.log(id);
+    document.title =
+      "Joseph Omondi - " + id.charAt(0).toUpperCase() + id.slice(1);
     setIsVisible(!isVisible);
     if (element) {
-      // console.log(element);
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      console.log(window.scrollY);
-
-      if (window.scrollY > 60) {
-        // Change 100 to your desired scroll position
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", showNavbar);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    if (location.hash.startsWith("#")) {
+      scrollToSection(location.hash.split("#")[1]);
+    }
   }, []);
-  const Links = [
-    {
-      name: "Home",
-      id: "home",
-    },
 
-    {
-      name: "About",
-      id: "about",
-    },
-    {
-      name: "Projects",
-      id: "projects",
-    },
-    {
-      name: "Contact",
-      id: "contact",
-    },
-  ];
   return (
     <div
       onClick={showNavbar}
@@ -73,35 +37,35 @@ function Navbar() {
     >
       <div className=" p-4 bg-primary flex">
         <div className="hidden md:flex justify-center w-full items-center">
-          <div className="text-white space-x-4">
-          <Link
-          to="/"
-          // onClick={() => scrollToSection(link.id)}
-          className={`border-b-2 border-transparent  hover:border-secondary hover:text-secondary p-2`}
-        >
-          Home
-        </Link>
-        <Link
-          to="#"
-          // onClick={() => scrollToSection(link.id)}
-          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
-        >
-          About
-        </Link>
-        <Link
-          to="/projects"
-          // onClick={() => scrollToSection(link.id)}
-          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
-        >
-          Projects
-        </Link>
-        <Link
-          to="#"
-          // onClick={() => scrollToSection(link.id)}
-          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
-        >
-          Contact
-        </Link>
+          <div className="text-white flex space-x-4">
+            <Link
+              to="/#home"
+              onClick={() => scrollToSection("home")}
+              className={`border-b-2 border-transparent  hover:border-secondary hover:text-secondary p-2`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/#about"
+              onClick={() => scrollToSection("about")}
+              className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+            >
+              About
+            </Link>
+            <Link
+              to="/#projects"
+              onClick={() => scrollToSection("projects")}
+              className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+            >
+              Projects
+            </Link>
+            <Link
+              to="/#contact"
+              onClick={() => scrollToSection("contact")}
+              className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+            >
+              Contact
+            </Link>
           </div>
         </div>
         <div className="flex space-x-2 transition-all ease-in text-white md:hidden">
@@ -123,28 +87,40 @@ function Navbar() {
       >
         <Link
           to="/"
-          // onClick={() => scrollToSection(link.id)}
+          onClick={() => {
+            setIsVisible(!isVisible);
+            scrollToSection("home");
+          }}
           className={`border-b-2 border-transparent  hover:border-secondary hover:text-secondary p-2`}
         >
           Home
         </Link>
         <Link
           to="#"
-          // onClick={() => scrollToSection(link.id)}
+          onClick={() => {
+            setIsVisible(!isVisible);
+            scrollToSection("about");
+          }}
           className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
         >
           About
         </Link>
         <Link
           to="#"
-          // onClick={() => scrollToSection(link.id)}
+          onClick={() => {
+            setIsVisible(!isVisible);
+            scrollToSection("projects");
+          }}
           className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
         >
           Projects
         </Link>
         <Link
           to="#"
-          // onClick={() => scrollToSection(link.id)}
+          onClick={() => {
+            setIsVisible(!isVisible);
+            scrollToSection("contact");
+          }}
           className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
         >
           Contact

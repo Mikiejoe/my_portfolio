@@ -20,7 +20,6 @@ function ProjectDetail() {
       if (!response.ok) throw new Error("Network response was not ok.");
       const data = await response.json();
       setProject(data);
-      console.log(data);
 
       // return data;
     } catch (error) {
@@ -31,6 +30,7 @@ function ProjectDetail() {
     }
   };
 
+  
   document.title = "Project - " + project.title;
   useEffect(() => {
     getProject();

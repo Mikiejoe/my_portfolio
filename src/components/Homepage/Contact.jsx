@@ -89,7 +89,7 @@ function Contact() {
   return (
     <div
       id="contact"
-      className="text-center flex flex-col items-center md:p-16 p-4 bg-primary-bg text-white"
+      className="text-center flex flex-col items-center md:pt-20 pt-16 px-4 bg-primary-bg text-white"
     >
       <div className="border-b-secondary border-b-2 pr-4 pl-4 w-fit items-center">
         <h1 className="text-[24px] md:text-[32px] font-bold text-white">
@@ -100,42 +100,46 @@ function Contact() {
         <div className="w-full text-start p-2">
           <h1 className="text-xl">Message Me</h1>
           <form onSubmit={handleSubmit}>
-            <div className="w-full mt-4 h-10 rounded-sm overflow-hidden">
+            <div className="w-full mt-4 h-10 rounded-md overflow-hidden">
               <input
                 type="text"
                 className="w-full h-full text-black p-2"
                 placeholder="Full Name"
                 value={name}
                 required
+                id="name"
                 onChange={handleNameChange}
               />
             </div>
-            <div className="w-full mt-4 h-10 rounded-sm overflow-hidden">
+            <div className="w-full mt-4 h-10 rounded-md overflow-hidden">
               <input
                 type="email"
                 className="w-full h-full text-black p-2"
                 placeholder="Email"
                 required
+                id="email"
                 value={email}
                 onChange={handleEmailChange}
               />
             </div>
-            <div className="w-full mt-4 h-10 rounded-sm overflow-hidden">
+            <div className="w-full mt-4 h-10 rounded-md overflow-hidden">
               <input
                 type="text"
                 className="w-full h-full text-black p-2"
                 placeholder="Your message subject"
                 value={subject}
                 required
+                id="subject"
                 onChange={handleSubjectChange}
               />
             </div>
-            <div className="w-full mt-4 rounded-sm overflow-hidden">
+            <div className="w-full mt-4 rounded-md overflow-hidden">
               <textarea
                 className="w-full h-full p-2 text-black"
                 rows={6}
                 placeholder="Your Message"
                 required
+                id="message"
                 value={message}
                 onChange={handleMessageChange}
               />

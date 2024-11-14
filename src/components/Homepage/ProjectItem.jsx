@@ -3,17 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 function ProjectItem({ project, className }) {
   const navigate = useNavigate();
-  console.log(project.images[0]);
   return (
     <div
       onClick={() =>
         navigate(`/projects/${project.slug}`)
       }
-      // scroll-item flex-shrink-0 mx-2 w-[300px] h-[250px] bg-gray-200 rounded-full shadow-md flex justify-center transition-transform duration-300
-
-      className={`bg-primary cursor-pointer h-full rounded-md overflow-hidden shadow-blue-300 shadow-md mr-2 ${className}`}
+    className="cursor-pointer p-2"
     >
-      <div>
+      <div className={`bg-primary cursor-pointer h-full rounded-md overflow-hidden shadow-blue-300 shadow-md mr-2 ${className}`}>
         <div className="h-1/2 overflow-hidden">
           <img
             src={project.images.length>0?project.images[0].image : "https://placehold.co/400"}
