@@ -1,5 +1,10 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import {
+  Mail,
+  Download,
+  ArrowRight,
+  Github,
+  Linkedin
+} from "lucide-react";
 
 const SKILLS = [
   {
@@ -32,79 +37,80 @@ const SKILLS = [
   },
 ];
 
+
 function About() {
-  const containerVariants = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "tween", stiffness: 50, duration: 2, ease: "linear" },
-    },
-  };
-  const ImageVariants = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "tween", duration: 2, stiffness: 50, ease: "linear" },
-    },
-  };
-
-  useEffect(() => {
-    document.title = "About - Joseph Omondi";
-  }, []);
-
+ 
   return (
-    <motion.div
-      id="about"
-      className="pt-16 px-4 md:pt-20 bg-primary-bg space-y-4 text-white"
-    >
-      <div className="flex space-x-2">
-        <div className="w-2 bg-secondary "></div>
-        <h1 className="text-4xl font-bold">About</h1>
-      </div>
-      <div className="flex flex-col-reverse lg-12 lg:flex-row lg:gap-16 gap-4 lg:h-[60vh] items-center justify-center">
-        <motion.div
-          className="text-gray-300 text-xl flex-1 md:w-1/2"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <p className="text-gray-300 text-xl flex-1">
-            Hi, I'm Joseph Omondi, an aspiring full-stack developer with a
-            passion for building dynamic and user-centric web and mobile
-            applications.
-          </p>
-          <div className="mt-4">
-            <h2 className="text-center text-2xl">My Skills</h2>
-            <div className="flex items-center flex-wrap">
-              {SKILLS.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex bg-primary shadow-xl m-2 rounded-xl p-2 justify-center items-center space-x-2"
-                >
-                  <img src={skill.logo} className="h-10 w-10" alt={skill.name} />
+    <section
+            id="about"
+            className="pt-20 min-h-screen flex items-center bg-gradient-to-br from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-200"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <p className="text-gray-600 dark:text-gray-400 mb-2 animate-slide-in">Hello! I'm</p>
+                <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2 animate-slide-in animate-delay-100">
+                  Joseph Omondi
+                </h1>
+                <h2 className="text-5xl font-extrabold text-gray-900 dark:text-white mb-6 animate-slide-in animate-delay-200">
+                  Backend Developer
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg animate-fade-in animate-delay-300">
+                  Passionate about creating seamless applications across mobile and
+                  web platforms. Specialized in Flutter, Node.js, Django, and React
+                  development.
+                </p>
+                <div className="flex gap-4 animate-fade-in animate-delay-400">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-medium transition-colors duration-200 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    Hire Me <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                  <a
+                  target="blank"
+                    href="https://drive.google.com/file/d/1m3Xkqqzox8tib4rALxF0NCgM5kYQG1Bi/view?usp=sharing"
+                    className="inline-flex items-center px-6 py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 rounded-full font-medium transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    Download CV <Download className="ml-2 h-5 w-5" />
+                  </a>
                 </div>
-              ))}
+              </div>
+              <div className="relative animate-fade-in animate-delay-500">
+                <div className="aspect-square rounded-full bg-orange-500 overflow-hidden relative animate-float"> 
+                  <img
+                    src="https://avatars.githubusercontent.com/u/99811467?v=4"
+                    alt="Professional headshot"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute bottom-8 right-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-6 py-3 animate-scale-in animate-delay-500">
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
+                    FOLLOW ME ON :
+                  </p>
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://github.com/Mikiejoe"
+                      className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 transition-colors duration-200 hover:scale-110"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/joseph-michael-445111235/"
+                      className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 transition-colors duration-200 hover:scale-110"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="mailto:omoshjoe02@gmail.com"
+                      className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 transition-colors duration-200 hover:scale-110"
+                    >
+                      <Mail className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
-        <motion.div
-          variants={ImageVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex-1 "
-        >
-          <div className="h-[400px] w-[400px] overflow-hiden p-4 bg-primary rounded-tl-[200px] rounded-tr-[350px] rounded-br-[200px] rounded-bl-[200px]">
-            <img
-              src="https://avatars.githubusercontent.com/u/99811467?v=4"
-              alt=""
-              className=" object-cover h-full w-full rounded-tr-[200px] rounded-tl-[300px] rounded-bl-[200px] rounded-br-[200px]"
-            />
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
+          </section>
   );
 }
 

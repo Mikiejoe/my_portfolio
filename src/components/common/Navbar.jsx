@@ -1,132 +1,117 @@
-import React, { useEffect, useState } from "react";
-import { FaCross, FaX } from "react-icons/fa6";
-import { MdCancel, MdMenu, MdOutlineCancel } from "react-icons/md";
-import { TbMultiplier05X } from "react-icons/tb";
-import { Link, useLocation } from "react-router-dom";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 function Navbar() {
-  const [isVisible, setIsVisible] = React.useState(false);
-  const [isFixed, setIsFixed] = useState(false);
-  const location = useLocation();
+  const [darkMode, setDarkMode] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const showNavbar = () => {
-    setIsVisible(!isVisible);
-  };
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     document.title =
       "Joseph Omondi - " + id.charAt(0).toUpperCase() + id.slice(1);
-    setIsVisible(!isVisible);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      window.location.hash = id;
+      setIsMenuOpen(false);
     }
   };
-
   useEffect(() => {
-    if (location.hash.startsWith("#")) {
-      scrollToSection(location.hash.split("#")[1]);
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
-  }, []);
-
+  }, [darkMode]);
   return (
-    <div
-      onClick={showNavbar}
-      className={`w-full fixed top-0 left-0 ${
-        isFixed ? "fixed top-0 left-0 shadow-lg" : ""
-      }`}
-    >
-      <div className=" p-4 bg-primary flex">
-        <div className="hidden md:flex justify-center w-full items-center">
-          <div className="text-white flex space-x-4">
-            <Link
-              to="/#home"
-              onClick={() => scrollToSection("home")}
-              className={`border-b-2 border-transparent  hover:border-secondary hover:text-secondary p-2`}
+    <nav className="bg-white dark:bg-gray-800 shadow-md fixed w-full z-10 transition-colors duration-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <a
+              className="text-xl font-bold text-gray-800 dark:text-white"
+              href="#"
             >
-              Home
-            </Link>
-            <Link
-              to="/#about"
+              Joseph Omondi
+            </a>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-200 hover:rotate-12"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <div className="sm:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+
+            <div className="hidden sm:flex sm:items-center sm:space-x-8">
+              <a
+                onClick={() => scrollToSection("about")}
+                className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
+              >
+                About
+              </a>
+              <a
+                onClick={() => scrollToSection("skills")}
+                className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
+              >
+                Skills
+              </a>
+              <a
+                onClick={() => scrollToSection("projects")}
+                className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
+              >
+                Projects
+              </a>
+              <a
+                onClick={() => scrollToSection("contact")}
+                className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {isMenuOpen && (
+        <div className="sm:hidden">
+          <div className="pt-2 pb-3 space-y-1">
+            <a
               onClick={() => scrollToSection("about")}
-              className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+              className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               About
-            </Link>
-            <Link
-              to="/#projects"
+            </a>
+            <a
+              onClick={() => scrollToSection("skills")}
+              className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            >
+              Skills
+            </a>
+            <a
               onClick={() => scrollToSection("projects")}
-              className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+              className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               Projects
-            </Link>
-            <Link
-              to="/#contact"
+            </a>
+            <a
               onClick={() => scrollToSection("contact")}
-              className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
+              className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               Contact
-            </Link>
+            </a>
           </div>
         </div>
-        <div className="flex space-x-2 transition-all ease-in text-white md:hidden">
-          <div className="w-12">
-            {isVisible ? (
-              <FaX onClick={showNavbar} size={24} />
-            ) : (
-              <MdMenu onClick={showNavbar} size={28} />
-            )}
-          </div>
-          <h1 className="text-lg font-bold text-secondary">Joseph Omondi</h1>
-        </div>
-      </div>
-      <div
-        className={`text-white h-[91vh] ${
-          isVisible ? "left-[0]" : "left-[-110%]"
-        } bg-primary w-screen z-[9999] absolute transition-all ease-in duration-500 flex flex-col md:hidden px-4`}
-        onScroll={showNavbar}
-      >
-        <Link
-          to="/"
-          onClick={() => {
-            setIsVisible(!isVisible);
-            scrollToSection("home");
-          }}
-          className={`border-b-2 border-transparent  hover:border-secondary hover:text-secondary p-2`}
-        >
-          Home
-        </Link>
-        <Link
-          to="#"
-          onClick={() => {
-            setIsVisible(!isVisible);
-            scrollToSection("about");
-          }}
-          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
-        >
-          About
-        </Link>
-        <Link
-          to="#"
-          onClick={() => {
-            setIsVisible(!isVisible);
-            scrollToSection("projects");
-          }}
-          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
-        >
-          Projects
-        </Link>
-        <Link
-          to="#"
-          onClick={() => {
-            setIsVisible(!isVisible);
-            scrollToSection("contact");
-          }}
-          className={`border-b-2 border-transparent hover:border-secondary hover:text-secondary p-2`}
-        >
-          Contact
-        </Link>
-      </div>
-    </div>
+      )}
+    </nav>
   );
 }
 

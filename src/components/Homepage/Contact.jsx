@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import { BsGithub, BsLinkedin, BsTwitterX } from "react-icons/bs";
-import { MdMail, MdPhone, MdWhatsapp } from "react-icons/md";
-import { Link } from "react-router-dom";
+import {
+  Mail,
+  MessageCircleQuestion,
+  UserRoundPen,
+  Text,
+  Heading,
+} from "lucide-react";
+import { useState } from "react";
 
 function Contact() {
   const [email, setEmail] = useState("");
@@ -11,6 +15,7 @@ function Contact() {
   const [response, setResponse] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -29,15 +34,16 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    if (email && subject && message) {
-      // Send the form data to the Django backend
+    if (true) {
       const formData = {
         email,
         subject,
         message,
         name,
       };
+      console.log(formData);
 
       try {
         const response = await fetch(
@@ -53,7 +59,7 @@ function Contact() {
 
         if (response.ok) {
           const data = await response.json();
-          // Handle the response from the backend
+
           setSuccess(true);
           setResponse(data.message);
           setTimeout(() => {
@@ -72,6 +78,7 @@ function Contact() {
         }
       } catch (error) {
         setError(true);
+
         setResponse(error);
         setTimeout(() => {
           setError(false);
@@ -82,156 +89,107 @@ function Contact() {
         setSubject("");
         setMessage("");
         setName("");
+        setLoading(false);
       }
+    } else {
+      console.log("nothing happened");
     }
   };
 
   return (
-    <div
+    <section
       id="contact"
-      className="text-center flex flex-col items-center md:pt-20 pt-16 px-4 bg-primary-bg text-white"
+      className="py-20 bg-white dark:bg-gray-800 transition-colors duration-200"
     >
-      <div className="border-b-secondary border-b-2 pr-4 pl-4 w-fit items-center">
-        <h1 className="text-[24px] md:text-[32px] font-bold text-white">
-          Get in touch with me
-        </h1>
-      </div>
-      <div className="w-full flex flex-col md:flex-row space-x-4 mt-2">
-        <div className="w-full text-start p-2">
-          <h1 className="text-xl">Message Me</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="w-full mt-4 h-10 rounded-md overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-6 animate-fade-in">
+          Get In Touch
+        </h2>
+
+        <div className="max-w-lg mx-auto animate-scale-in">
+          <form className="space-y-2" onSubmit={handleSubmit}>
+            <div className="flex items-center flex-row bg-gray-400 rounded-md">
+              <div className="bg-gray-400 h-full px-2">
+                <UserRoundPen />
+              </div>
               <input
                 type="text"
-                className="w-full h-full text-black p-2"
-                placeholder="Full Name"
-                value={name}
+                placeholder="Name"
                 required
-                id="name"
+                value={name}
                 onChange={handleNameChange}
+                id="name"
+                className=" block w-full rounded-md py-2 border-gray-700 outline-none bg-gray-300 pl-4 text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 transition-all duration-200"
               />
             </div>
-            <div className="w-full mt-4 h-10 rounded-md overflow-hidden">
+            <div className="flex items-center flex-row bg-gray-400 rounded-md">
+              <div className="bg-gray-400 h-full px-2">
+                <Mail />
+              </div>
               <input
-                type="email"
-                className="w-full h-full text-black p-2"
                 placeholder="Email"
+                type="email"
                 required
-                id="email"
                 value={email}
                 onChange={handleEmailChange}
+                id="email"
+                className=" block w-full rounded-md py-2 border-gray-300 outline-none bg-gray-300 pl-4 text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 transition-all duration-200"
               />
             </div>
-            <div className="w-full mt-4 h-10 rounded-md overflow-hidden">
+            <div className="flex items-center flex-row bg-gray-400 rounded-md">
+              <div className="bg-gray-400 h-full px-2">
+                <Heading />
+              </div>
               <input
+                placeholder="Subject"
                 type="text"
-                className="w-full h-full text-black p-2"
-                placeholder="Your message subject"
+                required
                 value={subject}
-                required
-                id="subject"
                 onChange={handleSubjectChange}
+                id="subject"
+                className=" block w-full rounded-md py-2 border-gray-700 outline-none bg-gray-300 pl-4 text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 transition-all duration-200"
               />
             </div>
-            <div className="w-full mt-4 rounded-md overflow-hidden">
+            <div className="flex items-center flex-row bg-gray-400 rounded-md">
+              <div className="bg-gray-400 h-full px-2">
+                <MessageCircleQuestion />
+              </div>
               <textarea
-                className="w-full h-full p-2 text-black"
-                rows={6}
-                placeholder="Your Message"
-                required
-                id="message"
                 value={message}
+                placeholder="Message"
+                required
                 onChange={handleMessageChange}
-              />
+                id="message"
+                rows={4}
+                className=" block w-full rounded-md border-gray-300 py-2 outline-none bg-gray-300 pl-4 text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 transition-all duration-200"
+              ></textarea>
             </div>
-
-            {success && (
-              <div className="mt-4 text-white bg-green-500 p-2 text-center rounded-md">
-                {response}
-              </div>
-            )}
             {error && (
-              <div className="mt-4 text-white bg-red-500 p-2 text-center rounded-md">
-                {response}
+              <div className="block text-sm font-medium bg-red-300 text-center p-2 rounded-md dark:bg-red-400 transition-colors text-gray-700 dark:text-gray-300">
+                <p>Error occured sending message try again later.</p>
               </div>
             )}
-
-            <div className="mt-4 rounded-md overflow-hidden">
-              <input
-                type="submit"
-                onSubmit={handleSubmit}
-                className="w-full h-full bg-secondary p-2"
-                value={"Contact me"}
-              />
+            <div>
+              {success ? (
+                <button
+                  type="submit"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  sent
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-all duration-200 hover:shadow-lg"
+                >
+                  {!loading ? "Send Message" : "Sending"}
+                </button>
+              )}
             </div>
           </form>
         </div>
-        <div className="w-full  text-start p-2">
-          <div className="w-full text-start space-y-2 p-2">
-            <h1 className="text-xl sm:text-center font-semibold mb-2">
-              Contact Information
-            </h1>
-            <div className="sm:flex md:block justify-between">
-              <div className="flex flex-col justify-between mt-6 space-y-4">
-                <div className="flex space-x-3">
-                  <div className="p-2 border-secondary border rounded-sm">
-                    <MdMail size={26} />
-                  </div>
-                  <div>
-                    <h2 className="text-secondary/80 text-[12px]">Email</h2>
-                    <p className="text-sm text-gray-300">
-                      omoshjoe02@gmail.com
-                    </p>
-                  </div>
-                </div>
-                <div className="flex space-x-3">
-                  <div className="p-2 border-secondary border rounded-sm">
-                    <MdPhone size={26} />
-                  </div>
-                  <div>
-                    <h2 className="text-secondary/80 text-[12px]">Phone</h2>
-                    <p className="text-sm text-gray-300">+254740510778</p>
-                  </div>
-                </div>
-                <div className="flex space-x-3">
-                  <div className="p-2 border-secondary border rounded-sm">
-                    <MdWhatsapp size={26} />
-                  </div>
-                  <div>
-                    <h2 className="text-secondary/80 text-[12px]">WhatsApp</h2>
-                    <p className="text-sm text-gray-300">+254114400824</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-xl font-semibold mb-2">
-                  Find me on social media
-                </h1>
-                <div className="flex space-x-3">
-                  <Link to={"https://www.x.com/omoshjoe02"}>
-                    <div className="p-2 border-secondary border-2 rounded-md">
-                      <BsTwitterX size={26} />
-                    </div>
-                  </Link>
-                  <Link to={"https://www.github.com/Mikiejoe"}>
-                    <div className="p-2 border-secondary border-2 rounded-md">
-                      <BsGithub size={26} />
-                    </div>
-                  </Link>
-                  <Link
-                    to={"https://www.linkedin.com/in/joseph-michael-445111235/"}
-                  >
-                    <div className="p-2 border-secondary border-2 rounded-md">
-                      <BsLinkedin size={26} />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

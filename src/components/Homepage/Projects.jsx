@@ -1,97 +1,77 @@
-import React, { useEffect } from "react";
-import Slider from "react-slick";
-import ProjectItem from "./ProjectItem";
-import Loading from "./Loading";
+import useProjects from '../../hooks/useFetch';
 
-const Projects = () => {
-  const [projects, setProjects] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
-  const [length, setLength] = React.useState(0);
-
-  const getProjects = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch(
-        "https://portfolio-backend-sigma-three.vercel.app/api/projects/"
-      );
-      if (!response.ok)  setError("Failed to load projects.");;
-      const data = await response.json();
-      
-      setProjects(data);
-    } catch (error) {
-      console.error("Failed to fetch projects:", error);
-      setError("Failed to load projects.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getProjects();
-  }, []);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    speed: 3000,
-    cssEase: "linear",
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-  // divide the projects into two arrays
-  const firstThreeProjects = projects.slice(0, projects.length / 2);
-  const secondThreeProjects = projects.slice(
-    projects.length / 2 + 1,
-    projects.length
-  );
-
+function Projects() {
+  
+    const { projects, loading, error } = useProjects();
   return (
-    <div id="projects" className="md:pt-20 pt-16 px-4 space-y-4">
-      <div className="flex mb-7 space-x-2">
-        <div className="w-2 bg-secondary"></div>
-        <h1 className="text-4xl font-bold text-white">Projects</h1>
-      </div>
-      {loading && <Loading />}
-      {error && <div>{error}</div>}
-      {!loading && !error && (
-        <div className="p-4">
-          <Slider {...settings}>
-            {projects.map((project) => (
-              <ProjectItem project={project} key={project.id} />
-            ))}
-          </Slider>
-        </div>
-      )}
-    </div>
-  );
-};
+    <section
+        id="projects"
+        className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-200"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-12">
+            Featured Projects
+          </h2>
 
-export default Projects;
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects && !loading
+              ? projects.slice(1).map((project,index) => (
+                  <div
+                    key={project.title}
+                    className={`bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in animate-delay-${index * 100}`}
+                  >
+                    <img
+                      src={project["images"][0].image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technology.split(",").map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 bg-indigo-100 cursor-pointer dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 rounded-full text-sm hover:scale-105 transition-transform duration-200"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              : [1, 2, 3, 4].map((project) => (
+                  <div
+                    key={project}
+                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-200"
+                  >
+                    <div className="w-full h-48 object-cover animate-pulse bg-gray-400 rounded-sm dark:bg-gray-600"></div>
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold animate-pulse rounded-md p-2 bg-gray-900 dark:bg-white mb-2"></h3>
+                      <p className="bg-gray-600 animate-pulse rounded-md  p-2 dark:bg-gray-300 mb-4"></p>
+                      <div className="flex flex-wrap gap-2">
+                        {[1, 2, 3].map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-6 py-3 animate-pulse bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 rounded-full text-sm"
+                          >
+                            {/* {tech} */}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+          </div>
+        </div>
+      </section>
+  )
+}
+
+export default Projects

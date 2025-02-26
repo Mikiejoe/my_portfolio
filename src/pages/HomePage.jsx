@@ -1,25 +1,22 @@
-import React from 'react'
-import Navbar from '../components/common/Navbar'
-import Hero from '../components/Homepage/Hero'
-import About from '../components/Homepage/About'
-import Projects from '../components/Homepage/Projects'
-import Footer from '../components/common/Footer'
-import Contact from '../components/Homepage/Contact'
+import React from "react";
+import About from "../components/Homepage/About";
+import Skills from "../components/Homepage/Skills";
+import Projects from "../components/Homepage/Projects";
+import Navbar from "../components/common/Navbar";
+import Contact from "../components/Homepage/Contact";
+import Footer from "../components/common/Footer";
 
 function HomePage() {
-  document.title = "Joseph Omondi - Portfolio";
   return (
-    <div className='relative'>
-        <Navbar/>
-        <Hero/>
-        <div className='md:px-24 p-4'>
-            <About/>
-            <Projects/>
-            <Contact/>
-        </div>
-        <Footer/>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <Navbar />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
