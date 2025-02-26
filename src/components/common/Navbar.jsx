@@ -29,7 +29,7 @@ function Navbar() {
           <div className="flex items-center">
             <a
               className="text-xl font-bold text-gray-800 dark:text-white"
-              href="#"
+              href="#about"
             >
               Joseph Omondi
             </a>
