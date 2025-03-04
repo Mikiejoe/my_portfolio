@@ -33,7 +33,7 @@ function Projects() {
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                         {project.title}
                       </h3>
-                      <a href={project.live_url} target="_blank">
+                      <a href={project.live_url} target="_blank" aria-label={project.title} >
                         <ExternalLink
                           className="text-gray-600 hover:text-gray-900 dark:text-gray-300"
                           size={20}

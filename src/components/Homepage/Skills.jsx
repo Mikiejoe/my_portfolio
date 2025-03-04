@@ -61,6 +61,7 @@ function Skills() {
                 </div>
                 <span className="bg-gray-400 dark:bg-gray-600 rounded-full hover:rotate-45 transition-all duration-500">
                   <img
+                  alt={skill.name}
                     src={skill.logo}
                     className="bg-gray-200 dark:bg-gray-600 h rounded-full transition-all duration-500"
                   ></img>

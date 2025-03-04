@@ -38,12 +38,14 @@ function Navbar() {
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setDarkMode(!darkMode)}
+              id="dark-mode"
               className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-200 hover:rotate-12"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <div className="sm:hidden">
               <button
+              id="light-mode"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
               >

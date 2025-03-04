@@ -90,18 +90,21 @@ function About() {
                   </p>
                   <div className="flex space-x-4">
                     <a
+                    aria-label="github"
                       href="https://github.com/Mikiejoe"
                       className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 transition-colors duration-200 hover:scale-110"
                     >
                       <Github className="w-5 h-5" />
                     </a>
                     <a
+                    aria-label="linkedin"
                       href="https://www.linkedin.com/in/joseph-michael-445111235/"
                       className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 transition-colors duration-200 hover:scale-110"
                     >
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a
+                    aria-label="gmail"
                       href="mailto:omoshjoe02@gmail.com"
                       className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 transition-colors duration-200 hover:scale-110"
                     >
