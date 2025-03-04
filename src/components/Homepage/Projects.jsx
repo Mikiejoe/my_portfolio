@@ -33,18 +33,21 @@ function Projects() {
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                         {project.title}
                       </h3>
-                      <Link to={project.live_url}>
-                        <ExternalLink color="white" />
-                      </Link>
+                      <a href={project.live_url} target="_blank">
+                        <ExternalLink
+                          className="text-gray-600 hover:text-gray-900 dark:text-gray-300"
+                          size={20}
+                        />
+                      </a>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      {project.description}
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3">
+                      {project.overview}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {project.technology.split(",").map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-indigo-100 cursor-pointer dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 rounded-full text-sm hover:scale-105 transition-transform duration-200"
+                          className="px-2 py-[2px] bg-indigo-100 cursor-pointer dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 rounded-full text-sm hover:scale-105 transition-transform duration-200"
                         >
                           {tech}
                         </span>

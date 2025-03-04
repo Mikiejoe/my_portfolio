@@ -43,6 +43,7 @@ function About() {
   return (
     <section
             id="about"
+            style={{backgroundImage:"url('')"}}
             className="pt-20 min-h-screen flex items-center bg-gradient-to-br from-rose-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-200"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -64,7 +65,7 @@ function About() {
                     href="#contact"
                     className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-medium transition-colors duration-200 hover:-translate-y-1 hover:shadow-lg"
                   >
-                    Hire Me <ArrowRight className="ml-2 h-5 w-5" />
+                    Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                   <a
                   target="blank"

@@ -43,7 +43,6 @@ function Contact() {
         message,
         name,
       };
-      console.log(formData);
 
       try {
         const response = await fetch(
@@ -91,8 +90,6 @@ function Contact() {
         setName("");
         setLoading(false);
       }
-    } else {
-      console.log("nothing happened");
     }
   };
 

@@ -15,7 +15,6 @@ const useProjects = (url) => {
           );
           if (!response.ok) setError("Failed to load projects.");
           const data = await response.json();
-          console.log("data",data)
           setProjects(data);
         } catch (error) {
           console.error("Failed to fetch projects:", error);
