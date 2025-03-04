@@ -55,24 +55,28 @@ function Navbar() {
 
             <div className="hidden sm:flex sm:items-center sm:space-x-8">
               <a
+              href="#about"
                 onClick={() => scrollToSection("about")}
                 className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
               >
                 About
               </a>
               <a
+              href="#skills"
                 onClick={() => scrollToSection("skills")}
                 className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
               >
                 Skills
               </a>
               <a
+              href="#projects"
                 onClick={() => scrollToSection("projects")}
                 className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
               >
                 Projects
               </a>
               <a
+              href="#contact"
                 onClick={() => scrollToSection("contact")}
                 className="text-gray-600 hover:text-gray-900 cursor-pointer dark:text-gray-300 dark:hover:text-white transition-all duration-200 hover:-translate-y-1"
               >
@@ -87,24 +91,28 @@ function Navbar() {
         <div className="sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
             <a
+            href="about"
               onClick={() => scrollToSection("about")}
               className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               About
             </a>
             <a
+            href="skills"
               onClick={() => scrollToSection("skills")}
               className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               Skills
             </a>
             <a
+            href="projects"
               onClick={() => scrollToSection("projects")}
               className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               Projects
             </a>
             <a
+            href="contact"
               onClick={() => scrollToSection("contact")}
               className="block px-3 py-2 text-gray-600 cursor-pointer hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
