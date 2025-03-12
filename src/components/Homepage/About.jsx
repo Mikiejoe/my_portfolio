@@ -98,7 +98,7 @@ function About() {
                     </a>
                     <a
                     aria-label="linkedin"
-                      href="https://www.linkedin.com/in/joseph-michael-445111235/"
+                      href="https://www.linkedin.com/in/joseph-omondi-445111235/"
                       className="text-gray-600 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 transition-colors duration-200 hover:scale-110"
                     >
                       <Linkedin className="w-5 h-5" />
